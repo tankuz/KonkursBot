@@ -12,7 +12,7 @@ dp = Dispatcher(bot=bot, storage=MemoryStorage())
 
 @dp.message_handler(commands=['set'])
 async def SettingDb(message: types.Message):
-    if message.from_user.id == ADMIN_ID:
+    if message.from_user.id in ADMIN_ID:
         try:
             db.createKanallar()
             for kanal in TELEGRAM_KANALLAR:
@@ -31,7 +31,7 @@ async def SettingDb(message: types.Message):
 
 @dp.message_handler(text="⬅️Bekor qilish", state="*")
 async def cancelState(message: types.Message, state: FSMContext):
-    if message.from_user.id == ADMIN_ID:
+    if message.from_user.id in ADMIN_ID:
         await message.answer("*Bekor qilindi!*", reply_markup=menu)
         await state.finish()
 
@@ -131,17 +131,17 @@ async def sendStaticsBot(message: types.Message):
 
 @dp.message_handler(commands=['admin', 'panel'])
 async def welcomeToAdminsplace(message: types.Message):
-    if message.from_user.id == ADMIN_ID:
+    if message.from_user.id in ADMIN_ID:
         await message.answer("*Riza, Xush kelibsiz!*", reply_markup=admin_panel)
 
 @dp.message_handler(text="⬅️Chiqish")
 async def exitAdminPanel(message: types.Message):
-    if message.from_user.id == ADMIN_ID:
+    if message.from_user.id in ADMIN_ID:
         await message.answer("*Bosh menyuga qaytdingiz!*", reply_markup=menu)
 
 @dp.message_handler(text="⭐️Homiy kanallar holati")
 async def viewAdminPartnerChannels(message: types.Message):
-    if message.from_user.id == ADMIN_ID:
+    if message.from_user.id in ADMIN_ID:
         txt = "*"
         kanallar = db.get_channels()
         for kanal in kanallar:
@@ -152,13 +152,13 @@ async def viewAdminPartnerChannels(message: types.Message):
         await message.answer(txt)
 @dp.message_handler(text="👤Foydalanuvchiga habar yuborish")
 async def sendToUser(message: types.Message, state: FSMContext):
-    if message.from_user.id == ADMIN_ID:
+    if message.from_user.id in ADMIN_ID:
         await message.answer("*Habar yubormoqchi bo'lgan foydalanuvchingizni id raqamini yuboring:*", reply_markup=bekor_qilish)
         await sendUser.user_id.set()
 
 @dp.message_handler(state=sendUser.user_id)
 async def GetIdSendUser(message: types.Message, state: FSMContext):
-    if message.from_user.id == ADMIN_ID:
+    if message.from_user.id in ADMIN_ID:
         await state.update_data(
             {
                 'id': message.text
@@ -168,7 +168,7 @@ async def GetIdSendUser(message: types.Message, state: FSMContext):
         await sendUser.text.set()
 @dp.message_handler(state=sendUser.text)
 async def finishSendUserState(message: types.Message, state: FSMContext):
-    if message.from_user.id == ADMIN_ID:
+    if message.from_user.id in ADMIN_ID:
         text = message.text
         await state.update_data(
             {
