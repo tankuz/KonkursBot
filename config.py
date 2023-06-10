@@ -1,5 +1,5 @@
 API_TOKEN = "6030393617:AAGUoCIPp693S8nwwnaBAZKBet2HQuxWHJU"
-ADMIN_ID = 6256299020
+ADMIN_ID = [6256299020,6095810791]
 BOT = "https://t.me/RizaKonkursbot"
 
 #  @ - belgisi bilan!
