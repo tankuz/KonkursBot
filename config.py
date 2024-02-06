@@ -1,6 +1,6 @@
-API_TOKEN = "6030393617:AAGUoCIPp693S8nwwnaBAZKBet2HQuxWHJU"
-ADMIN_ID = [6256299020,6095810791]
-BOT = "https://t.me/RizaKonkursbot"
+API_TOKEN = "6761944861:AAEdnDtGIsuktLgZEWfbiwwA5gzXi2-z4oE"
+ADMIN_ID = [5941656171,5035706309]
+BOT = "https://t.me/ustozai_bot"
 
 #  @ - belgisi bilan!
 TELEGRAM_KANALLAR = [
